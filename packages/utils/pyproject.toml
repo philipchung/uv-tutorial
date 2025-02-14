@@ -1,0 +1,18 @@
+[project]
+name = "utils"
+version = "0.1.0"
+description = "Shared utility functions."
+readme = "README.md"
+authors = [{ name = "Philip Chung" }]
+requires-python = ">=3.12"
+dependencies = [
+    "apprise>=1.9.2",
+    "numpy>=2.2.3",
+    "pandas>=2.2.3",
+    "python-dotenv>=1.0.1",
+    "tqdm>=4.67.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

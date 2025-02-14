@@ -1,0 +1,102 @@
+[project]
+name = "main_project"
+version = "0.1.0"
+description = "Tutorial for UV Monorepo Development"
+readme = "README.md"
+authors = [{ name = "Philip Chung" }]
+requires-python = ">=3.12"
+dependencies = [
+    "utils",
+    "r1",
+    "ruff>=0.9.6",
+    "mypy>=1.15.0",
+    "pandas>=2.2.3",
+    "tqdm>=4.67.1",
+    "typer>=0.15.1",
+    "ipykernel>=6.29.5",
+    "ipywidgets>=8.1.5",
+    "jupyter>=1.1.1",
+    "matplotlib>=3.10.0",
+    "seaborn>=0.13.2",
+    "numpy>=2.2.3",
+    "scipy>=1.15.1",
+]
+
+[tool.uv]
+link-mode = "copy"
+
+[tool.uv.sources]
+utils = { workspace = true }
+r1 = { workspace = true }
+
+[tool.uv.workspace]
+members = ["packages/*"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+
+[tool.ruff]
+extend-include = ["*.ipynb"]
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+# Same as Black
+line-length = 100
+# Indent with 4 spaces
+indent-width = 4
+# Assume Python 3.12
+target-version = "py312"
+
+[tool.ruff.lint]
+# select = ["ALL"]
+select = [
+    # pycodestyle
+    "E",
+    # Pyflakes
+    "F",
+    # pyupgrade
+    "UP",
+    # flake8-simplify
+    "SIM",
+    # isort
+    "I",
+]
+ignore = []
+# Allow unused variables when underscore-prefixed
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+
+[tool.ruff.lint.mccabe]
+# Flag errors (`C901`) whenever the complexity level exceeds 10.
+max-complexity = 10
+
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+docstring-code-format = true
+docstring-code-line-length = 80
